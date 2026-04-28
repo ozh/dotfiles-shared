@@ -17,18 +17,18 @@ if [ -f ~/.nanorc ] && ! grep -q "set tabsize 4" ~/.nanorc ; then
 fi
 
 # Install my binaries
-for FILE in $(ls ~/dotfiles/bin);
+for FILE in $(ls ~/dotfiles-shared/bin);
 do
-    cp ~/dotfiles/bin/$FILE ~/bin
+    cp ~/dotfiles-shared/bin/$FILE ~/bin
     chmod +x ~/bin/$FILE
 done
 
-# Create .dotfiles from dotfiles/files (backup old ones and move newer ones)
-mkdir -p ~/dotfiles_old
-for FILE in $(ls ~/dotfiles/dotfiles);
+# Create .dotfiles from dotfiles-shared/files (backup old ones and move newer ones)
+mkdir -p ~/dotfiles-shared_old
+for FILE in $(ls ~/dotfiles-shared/dotfiles);
 do
-    [ -f ~/.$FILE ] && mv ~/.$FILE ~/dotfiles_old/
-    cp ~/dotfiles/dotfiles/$FILE ~/.$FILE
+    [ -f ~/.$FILE ] && mv ~/.$FILE ~/dotfiles-shared_old/
+    cp ~/dotfiles-shared/dotfiles/$FILE ~/.$FILE
 done
 
 source ~/.bash_profile
